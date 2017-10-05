@@ -1,0 +1,28 @@
+<!-- tasks-form.handlebars -->
+
+<!-- NAME -->
+<div class="form-group">
+    <label for="name">Task Name</label>
+    <input class="form-control" type="text" name="name" placeholder="Task Name" value="{{task.name}}">
+</div>
+
+<!-- DATE -->
+<div class="form-group">
+    <label for="date">Task Due Date</label>
+    <input class="form-control" type="datetime-local" name="date" value="{{task.date}}">
+    {{#if task.date}}
+        <p>Current Due Date: {{task.date}}</p>
+    {{/if}}
+</div>
+
+<!-- DESCRIPTION -->
+<div class="form-group">
+    <label for="description">Description</label>
+    <textarea class="form-control" name="description" placeholder="Task Notes" rows="3">{{task.description}}</textarea>
+</div>
+
+<!-- BUTTON -->
+<button type="submit">Save Task</button>
+<form method="GET" action="/">
+    <button type="submit">Cancel</buton>
+</form>

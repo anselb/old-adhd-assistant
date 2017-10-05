@@ -1,0 +1,30 @@
+<!-- tasks-behaviors-index.handlebars -->
+<!DOCTYPE html>
+
+<div class="col-md-4 col-md-offset-2">
+    <h1>Tasks</h1>
+    {{#each tasks}}
+        <div class="checkbox">
+            <label>
+                <a href="/tasks/{{this._id}}">
+                    <input type="checkbox" name="{{this._id}}">{{this.name}}
+                </a>
+            </label>
+            <p>{{this.date}}</p>
+            <p>{{this.description}}</p>
+        </div>
+
+        <form method="GET" action="/tasks/{{this._id}}/edit">
+            <button type="submit">Edit</buton>
+        </form>
+
+        <form method="POST" action="/reviews/{{this._id}}?_method=DELETE">
+            <button type="submit">Delete</button>
+        </form>
+
+    {{/each}}
+</div>
+
+<div class="col-md-4">
+    
+</div>

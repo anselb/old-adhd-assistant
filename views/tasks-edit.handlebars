@@ -1,0 +1,11 @@
+<!-- tasks-edit.handlebars -->
+
+<!DOCTYPE html>
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <legend>Edit Task</legend>
+        <form method='POST' action='/tasks/{{task._id}}?_method=PUT'>
+            {{> tasks-form }}
+        </form>
+    </div>
+</div>
