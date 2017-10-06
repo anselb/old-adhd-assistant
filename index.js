@@ -19,12 +19,14 @@ require('./controllers/tasks')(app)
 require('./controllers/behaviors')(app)
 
 var Task = require('./models/task')
-//var Behavior = require('./models/task')
+var Behavior = require('./models/behavior')
 
 //GET index
 app.get('/', function (req, res) {
     Task.find(function (err, tasks) {
-        res.render('tasks-behaviors-index', { tasks: tasks })
+        Behavior.find(function (err, behaviors) {
+            res.render('tasks-behaviors-index', { tasks: tasks, behaviors: behaviors })
+        })
     })
 })
 

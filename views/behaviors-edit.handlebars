@@ -1,0 +1,11 @@
+<!-- behaviors-edit.handlebars -->
+
+<!DOCTYPE html>
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <legend>Edit Behavior</legend>
+        <form method="POST" action="/behaviors/{{behavior._id}}?_method=PUT">
+            {{> behaviors-form }}
+        </form>
+    </div>
+</div>

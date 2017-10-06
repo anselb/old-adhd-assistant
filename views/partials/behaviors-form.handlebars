@@ -1,5 +1,15 @@
 <!-- behaviors-form.handlebars -->
 
+<!-- IMPACT -->
+<div class="form-group">
+    <label for="impact">Impact Type</label>
+    <select class="form-control" name="impact">
+        <option value={{review.rating}} selected disabled hidden>{{review.rating}}</option>
+        <option value="Positive">Positive</option>
+        <option value="Negative">Negative</option>
+    </select>
+</div>
+
 <!-- NAME -->
 <div class="form-group">
     <label for="name">Brief Behavior Label</label>

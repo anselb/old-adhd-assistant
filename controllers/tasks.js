@@ -58,7 +58,7 @@ module.exports = function (app) {
     })
 
     //DELETE task
-    app.delete('/reviews/:id', function (req, res) {
+    app.delete('/tasks/:id', function (req, res) {
         Task.findByIdAndRemove(req.params.id, function (err) {
             res.redirect('/')
         })

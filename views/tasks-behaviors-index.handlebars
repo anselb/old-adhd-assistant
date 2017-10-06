@@ -15,10 +15,10 @@
         </div>
 
         <form method="GET" action="/tasks/{{this._id}}/edit">
-            <button type="submit">Edit</buton>
+            <button type="submit">Edit</button>
         </form>
 
-        <form method="POST" action="/reviews/{{this._id}}?_method=DELETE">
+        <form method="POST" action="/tasks/{{this._id}}?_method=DELETE">
             <button type="submit">Delete</button>
         </form>
 
@@ -26,5 +26,30 @@
 </div>
 
 <div class="col-md-4">
-    
+    <h1>Behaviors<h1>
+        {{#each behaviors}}
+            {{#if this.numImpact}}
+                <h2 class="text-success">Good Behaviors</h2>
+                <ul>
+                    <li class="text-success"><a href="/behaviors/{{this._id}}">{{this.name}}</a></li>
+                </ul>
+                <form method="GET" action="/behaviors/{{this._id}}/edit">
+                    <button type="submit">Edit</button>
+                </form>
+                <form method="POST" action="/behaviors/{{this._id}}?_method=DELETE">
+                    <button type="submit">Delete</button>
+                </form>
+            {{else}}
+                <h2 class="text-danger">Bad Behaviors</h2>
+                <ul>
+                    <li class="text-danger"><a href="/behaviors/{{this._id}}">{{this.name}}</a></li>
+                </ul>
+                <form method="GET" action="/behaviors/{{this._id}}/edit">
+                    <button type="submit">Edit</button>
+                </form>
+                <form method="POST" action="/behaviors/{{this._id}}?_method=DELETE">
+                    <button type="submit">Delete</button>
+                </form>
+            {{/if}}
+        {{/each}}
 </div>
