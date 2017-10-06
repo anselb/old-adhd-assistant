@@ -1,0 +1,19 @@
+<!-- behaviors-form.handlebars -->
+
+<!-- NAME -->
+<div class="form-group">
+    <label for="name">Brief Behavior Label</label>
+    <input class="form-control" type="text" name="name" placeholder="I am..." value="{{behavior.name}}">
+</div>
+
+<!-- DESCRITION -->
+<div class="form-group">
+    <label for="description">Description</label>
+    <textarea class="form-control" name="description" placeholder="Behavior Notes" rows="5">{{behavior.description}}</textarea>
+</div>
+
+<!-- BUTTON -->
+<button type="submit">Save Behavior</button>
+<form method="GET" action="/">
+    <button type="submit">Cancel</buton>
+</form>

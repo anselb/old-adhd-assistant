@@ -16,8 +16,10 @@ app.use(methodOverride('_method'))
 app.use(express.static(path.join(__dirname, 'public')))
 
 require('./controllers/tasks')(app)
+require('./controllers/behaviors')(app)
 
 var Task = require('./models/task')
+//var Behavior = require('./models/task')
 
 //GET index
 app.get('/', function (req, res) {
