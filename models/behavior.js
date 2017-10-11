@@ -1,7 +1,7 @@
 const mongoose = require('mongoose'),
     Schema = mongoose.Schema
 
-var BehaviorShema = new Schema({
+var BehaviorSchema = new Schema({
     impact: { type: String, required: true },
     numImpact: { type: Number },
     name: { type: String, required: true },
@@ -10,7 +10,7 @@ var BehaviorShema = new Schema({
 
 //Add severity of issue or helpfulness
 
-BehaviorShema.pre('save', function (next) {
+BehaviorSchema.pre('save', function (next) {
     if (this.impact === 'Positive') {
         this.numImpact = 1
     } else {
@@ -19,4 +19,4 @@ BehaviorShema.pre('save', function (next) {
     next()
 })
 
-module.exports = mongoose.model('Behavior', BehaviorShema)
+module.exports = mongoose.model('Behavior', BehaviorSchema)

@@ -14,14 +14,19 @@
             <p>{{this.description}}</p>
         </div>
 
-        <form method="GET" action="/tasks/{{this._id}}/edit">
-            <button type="submit">Edit</button>
+        <form method="POST" action="/tasks/{{this._id}}/subtasks">
+            <textarea name="name" placeholder="Add Subtask"></textarea>
+            <p class="form-submit-container"><input type="submit" /></p>
         </form>
 
         <form method="POST" action="/tasks/{{this._id}}?_method=DELETE">
-            <button type="submit">Delete</button>
+            <a class="btn btn-default" href="/tasks/{{this._id}}/edit" role="button">Edit</a>
+            <button class="btn btn-default" type="submit">Delete</button>
         </form>
 
+        {{#each this.subtask}}
+            {{this.name}}
+        {{/each}}
     {{/each}}
 </div>
 

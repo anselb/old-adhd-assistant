@@ -25,7 +25,7 @@ module.exports = function (app) {
 
     //POST create new task
     app.post('/tasks', function (req, res) {
-        console.log(req.body.date)
+        //console.log(req.body.date)
         var date = new Date(req.body.date)
         var userTimezoneOffset = date.getTimezoneOffset() * 60000
         req.body.date = new Date(date.getTime() + userTimezoneOffset).toLocaleString()
@@ -34,6 +34,16 @@ module.exports = function (app) {
         Task.create(req.body, function (err, task) {
             console.log(task)
             res.redirect('/')
+        })
+    })
+
+    //POST create new subtask
+    app.post('/tasks/:taskId/subtasks', function (req, res) {
+        var subtask = new Task(req.body)
+        Task.findById(req.params.taskId).then((task) => {
+            task.subtask.push(subtask)
+            task.save()
+            return res.redirect('/')
         })
     })
 
