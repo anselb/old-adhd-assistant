@@ -30,6 +30,7 @@ app.get('/', function (req, res) {
     })
 })
 
+//Start server
 app.listen(process.env.PORT || 3000, function () {
     console.log('ADHD Assistant listening on port 3000')
 })

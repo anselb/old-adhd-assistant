@@ -25,12 +25,12 @@ module.exports = function (app) {
 
     //POST create new task
     app.post('/tasks', function (req, res) {
-        //console.log(req.body.date)
-        var date = new Date(req.body.date)
-        var userTimezoneOffset = date.getTimezoneOffset() * 60000
-        req.body.date = new Date(date.getTime() + userTimezoneOffset).toLocaleString()
-        //req.body.date = userDate.toLocaleString('en-US')
-        console.log(req.body.date)
+        //console.log(req.body.dueAt)
+        var date = new Date(req.body.dueAt)
+        // var userTimezoneOffset = date.getTimezoneOffset() * 60000
+        // req.body.dueAt = new Date(date.getTime() + userTimezoneOffset).toLocaleString()
+        //req.body.dueAt = userDate.toLocaleString('en-US')
+        console.log(req.body.dueAt)
         Task.create(req.body, function (err, task) {
             console.log(task)
             res.redirect('/')
@@ -40,19 +40,21 @@ module.exports = function (app) {
     //POST create new subtask
     app.post('/tasks/:taskId/subtasks', function (req, res) {
         var subtask = new Task(req.body)
-        Task.findById(req.params.taskId).then((task) => {
-            task.subtask.push(subtask)
-            task.save()
-            return res.redirect('/')
-        })
+        if (req.body.name !== '') {
+            Task.findById(req.params.taskId).then((task) => {
+                task.subtask.push(subtask)
+                task.save()
+                return res.redirect('/')
+            })
+        }
     })
 
     //PUT edit task
     app.put('/tasks/:id', function (req, res) {
-        if (req.body.date === '') {
+        if (req.body.dueAt === '') {
             Task.findById(req.params.id).then((task) => {
-                req.body.date = task.date
-                console.log(task.date)
+                req.body.dueAt = task.dueAt
+                console.log(task.dueAt)
             }).then(() => {
                 console.log(req.body)
                 Task.findByIdAndUpdate(req.params.id, req.body, function (err, task) {

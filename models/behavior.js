@@ -2,19 +2,19 @@ const mongoose = require('mongoose'),
     Schema = mongoose.Schema
 
 var BehaviorSchema = new Schema({
-    impact: { type: String, required: true },
-    numImpact: { type: Number },
-    name: { type: String, required: true },
-    description: { type: String, required: true }
+    impact            : { type: String, required: true },
+    isPositive        : { type: Boolean },
+    name              : { type: String, required: true },
+    description       : { type: String, required: true }
 })
 
 //Add severity of issue or helpfulness
 
 BehaviorSchema.pre('save', function (next) {
     if (this.impact === 'Positive') {
-        this.numImpact = 1
+        this.isPositive = true
     } else {
-        this.numImpact = 0
+        this.isPositive = false
     }
     next()
 })
