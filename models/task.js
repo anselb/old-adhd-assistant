@@ -12,11 +12,11 @@ var TaskSchema = new Schema({
 })
 
 TaskSchema.pre('save', function(next) {
+    // Formats date to look nicer
     const date = new Date(this.dueAt)
     const days = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
     this.dueInMonth = days[date.getMonth()]
     this.dueOnDay = date.getDate()
-    console.log("test")
 
     let dateHour = date.getHours()
     let dayOrEvening = "AM"
@@ -32,7 +32,7 @@ TaskSchema.pre('save', function(next) {
     if (dateMinutes < 10) {
         dateMinutes = "0" + String(dateMinutes)
     }
-    
+
     this.dueAtTime = String(dateHour) + ":" + String(dateMinutes) + " " + dayOrEvening
     next()
 })
