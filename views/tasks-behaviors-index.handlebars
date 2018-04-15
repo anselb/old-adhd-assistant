@@ -1,18 +1,16 @@
 <!-- tasks-behaviors-index.handlebars -->
 
 <div class="col-md-4 col-md-offset-2">
-    <h1>Tasks</h1>
+    <h1>Tasks <a href="/tasks/new/">+</a></h1>
     <!-- Show all of the tasks and subtasks -->
     {{#each tasks}}
-        <div class="checkbox bg-info">
+        <div class="checkbox bg-info task-box">
             <form class="form-inline" method="POST" action="/tasks/{{this._id}}?_method=DELETE">
                 <label class="form-group">
                     <a href="/tasks/{{this._id}}">
                         <input type="checkbox" name="{{this._id}}">{{this.name}}
                     </a>
                 </label>
-                <a class="form-group btn btn-warning btn-xs" href="/tasks/{{this._id}}/edit" role="button">Edit</a>
-                <button class="form-group btn btn-danger btn-xs" type="submit">Delete</button>
             </form>
 
             <p>Due: {{this.dueInMonth}} {{this.dueOnDay}} at {{this.dueAtTime}}</p>
@@ -22,6 +20,10 @@
                     Subtasks
                     <span class="caret"></span>
             </a>
+            <div class="align-right">
+                <a class="form-group btn btn-warning btn-xs" href="/tasks/{{this._id}}/edit" role="button">Edit</a>
+                <button class="form-group btn btn-danger btn-xs" type="submit">Delete</button>
+            </div>
         </div>
         <!-- Show all of the subtasks for each task -->
         <div class="in collapse" id="{{this._id}}">
@@ -44,20 +46,23 @@
 </div>
 
 <div class="col-md-4">
-    <h1>Behaviors<h1>
+    <h1>Behaviors <a href="/behaviors/new/">+</a><h1>
         <!-- Show all of the good behaviors -->
         <h2 class="text-success">Good Behaviors</h2>
         <dl>
             {{#each behaviors}}
                 {{#if this.isPositive}}
-                    <div class="bg-success">
+                    <div class="bg-success behavior-box">
                         <form class="form-inline" method="POST" action="/behaviors/{{this._id}}?_method=DELETE">
                             <dt class="form-group text-success"><a href="/behaviors/{{this._id}}">{{this.name}}</a></dt>
-                            <a class="form-group btn btn-warning btn-xs" href="/behaviors/{{this._id}}/edit" role="button">Edit</a>
-                            <button class="form-group btn btn-danger btn-xs" type="submit">Delete</button>
                         </form>
 
                         <dd class="text-success">{{this.description}}</dd>
+
+                        <div class="align-right">
+                            <a class="form-group btn btn-warning btn-xs" href="/behaviors/{{this._id}}/edit" role="button">Edit</a>
+                            <button class="form-group btn btn-danger btn-xs" type="submit">Delete</button>
+                        </div>
                     </div>
                 {{/if}}
             {{/each}}
@@ -67,14 +72,17 @@
         <dl>
             {{#each behaviors}}
                 {{#unless this.isPositive}}
-                <div class="bg-danger">
+                <div class="bg-danger behavior-box">
                     <form class="form-inline" method="POST" action="/behaviors/{{this._id}}?_method=DELETE">
                         <dt class="form-group text-danger"><a href="/behaviors/{{this._id}}">{{this.name}}</a></dt>
-                        <a class="form-group btn btn-warning btn-xs" href="/behaviors/{{this._id}}/edit" role="button">Edit</a>
-                        <button class="form-group btn btn-danger btn-xs" type="submit">Delete</button>
                     </form>
 
                     <dd class="text-danger">{{this.description}}</dd>
+
+                    <div class="align-right">
+                        <a class="form-group btn btn-warning btn-xs" href="/behaviors/{{this._id}}/edit" role="button">Edit</a>
+                        <button class="form-group btn btn-danger btn-xs" type="submit">Delete</button>
+                    </div>
                 </div>
                 {{/unless}}
             {{/each}}

@@ -1,0 +1,45 @@
+.task-box {
+    /* box-sizing: border-box; */
+    padding: 10px;
+}
+
+.behavior-box {
+    padding: 10px;
+}
+
+.modify-buttons {
+    position: relative;
+    left: 100px;
+}
+
+.navbar-btn {
+    border: none;
+    background: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.bg-info {
+    background: none;
+    border: 10px solid #d9edf7;
+    border-radius: 5px;
+}
+
+.bg-success {
+    background: none;
+    border: 10px solid #dff0d8;
+    border-radius: 5px;
+}
+
+.bg-danger {
+    background: none;
+    border: 10px solid #f2dede
+    border-radius: 5px;
+}
+
+.align-right {
+    display: block;
+    float: right;
+}

@@ -7,3 +7,19 @@ v2--------------------
 
 socket io bot
 bootstrap styling
+
+css/ui----------------
+
+Work on hierarchy - titles should be bigger
+Add some padding to buttons
+Remove background colors, and put colored border around it instead
+Make caret turn
+Fill the space of the tasks area, focussing on relocating buttons
+Change the font size to contrast elements like the title and description
+Can remove the border buttons in the navbar
+Add '+' icon to navbar buttons
+Add buttons next to titles of the tasks and behaviors
+Add a '+' icon next to tasks, good behaviors and bad behaviors
+Make sure that text is indented to line up with check mark, under check mark
+Convert text in subtasks to text boxes so they can be changed instantly
+Make sure that the text next to check mark activates check mark
